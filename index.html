@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        margin: 0;
+    }
+    ul{
+        margin:0;
+        padding: 0;
+    }
+    li{
+        width:122px;
+        height:172px;
+        list-style: none;
+        float: left;
+        overflow: hidden;       
+        /* 溢出隐藏 */
+    }
+    div{
+        position: relative;
+        top:0;
+        left:0;
+    }
+    img{
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img\0.JPG" alt="">
+                <img src="img\0.JPG" alt="">
+            </div>
+        </li>
+    </ul>
+    <script src="myjs.js"></script>
+    <script>
+    var oUl=document.getElementsByTagName("ul")[0];
+    var aLi=oUl.getElementsByTagName("li");
+    var aDiv=document.getElementsByTagName("div");
+    var aImg=oUl.getElementsByTagName("img");
+    clock();
+    setInterval(function(){
+         clock();
+         
+    },1000);
+    function clock(){
+         var oTime=new Date();
+         var iH = oTime.getHours();
+         var iMi = oTime.getMinutes();
+         var iS = oTime.getSeconds();
+         var sTime=add0(iH)+":"+add0(iMi)+":"+add0(iS);
+        //  console.log(sTime);
+         for(var i=0;i<sTime.length;i++){
+                aImg[2*i].src=sTime[i]==":"?"img/colon.JPG":"img/"+sTime[i]+".JPG";     //当前时间  
+              }
+        oTime.setSeconds(oTime.getSeconds()+1);
+        var iS1 = oTime.getSeconds();
+        var sTime1=add0(iH)+":"+add0(iMi)+":"+add0(iS1);
+        // console.log(sTime1);
+        for(var i=0;i<sTime1.length;i++){
+                aImg[2*i+1].src=sTime1[i]==":"?"img/colon.JPG":"img/"+sTime1[i]+".JPG"; 
+            
+            }   
+        for(var i=0;i<sTime.length;i++){  
+            if(sTime[i]!=sTime1[i]){      
+                doMove(aDiv[i],2.58,-172,"top");
+                aDiv[i].style.top="0"; 
+            }       
+        } 
+        // for(var i=0;i<sTime.length;i++){  
+        //         aImg[2].src=aImg[5].src="img/colon0.JPG"
+        // }
+        var arr = [];
+        for (var i = 0; i < sTime.length; i++) {
+            if (sTime[i] != sTime1[i]) {
+                arr.push(i);
+            }
+        }
+        // console.log(arr);
+        aImg[4].src = "img/colon.JPG";
+        aImg[10].src = "img/colon.JPG";
+        setTimeout(function () {
+            aImg[4].src = "img/colon0.JPG";
+            aImg[10].src = "img/colon0.JPG";
+        }, 500)
+
+    }
+   
+
+    
+    </script>
+</body>
+</html>
